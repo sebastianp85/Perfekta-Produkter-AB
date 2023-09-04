@@ -119,8 +119,8 @@ public class Main {
                     for (Staff staff : staffList) {
                         if (staff instanceof Employee) {
                             Employee employee = (Employee) staff;
-                            if (employee.salary >0) {
-                                System.out.println("Namn: " + employee.firstName + " " + employee.lastName + ", Lön: " + employee.salary + ", ID " + employee.id);
+                            if (employee.getSalary() >0) {
+                                System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Lön: " + employee.getSalary() + ", ID " + employee.getId());
                             }
                         }
                     }
@@ -131,12 +131,12 @@ public class Main {
                     for (Staff staff : staffList) {
                         if (staff instanceof Employee) {
                             Employee employee = (Employee) staff;
-                            if (employee.id == updateSalaryId){
-                                System.out.println("Nuvarande lön för " + employee.firstName + " " + employee.lastName + " är: " + employee.salary);
+                            if (employee.getId() == updateSalaryId){
+                                System.out.println("Nuvarande lön för " + employee.getFirstName() + " " + employee.getLastName() + " är: " + employee.getSalary());
                                 System.out.println("Ange den nya lönen:");
                                 int newSalary = scanner.nextInt();
-                                employee.salary = newSalary;
-                                System.out.println("Den nya lönen för " + employee.firstName + " " + employee.lastName +  " är nu: " + employee.salary);
+                                employee.setSalary(newSalary);
+                                System.out.println("Den nya lönen för " + employee.getFirstName() + " " + employee.getLastName() +  " är nu: " + employee.getSalary());
                             }
                         }
                     }
@@ -147,7 +147,7 @@ public class Main {
                         if (staff instanceof Trainee) {
                             Trainee trainee = (Trainee) staff;
 
-                            System.out.println("Namn:" + trainee.firstName + " " + trainee.lastName   + ", ID, " + trainee.id);
+                            System.out.println("Namn:" + trainee.getFirstName() + " " + trainee.getLastName() + ", ID, " + trainee.getId());
                         }
                     }
                     System.out.println("Ange ID för den person du vill lägga till ett omdöme för");
@@ -157,12 +157,12 @@ public class Main {
                     for (Staff staff : staffList) {
                         if (staff instanceof Trainee) {
                             Trainee trainee = (Trainee) staff;
-                            if (trainee.id == updateEvaluationId){
+                            if (trainee.getId() == updateEvaluationId){
 
                                 System.out.println("Skriv ett kortfattat omdöme om praktikantens insats:");
                                 String evaluationStatement = scanner.nextLine();
-                                trainee.evaluation = evaluationStatement;
-                                System.out.println("Omdömet för " + trainee.firstName + " " + trainee.lastName +  " har uppdaterats till följande: " + trainee.evaluation);
+                                trainee.setEvaluation(evaluationStatement);
+                                System.out.println("Omdömet för " + trainee.getFirstName() + " " + trainee.getLastName() +  " har uppdaterats till följande: " + trainee.getEvaluation());
                             }
                         }
                     }
@@ -180,9 +180,9 @@ public class Main {
                 while (iterator.hasNext()) {
                     Staff staff = iterator.next();
 
-                    if (staff.id == deleteStaffById) {
+                    if (staff.getId() == deleteStaffById) {
                         iterator.remove();
-                        System.out.println(staff.firstName + " " + staff.lastName  + " med ID " + deleteStaffById + " har nu tagits bort från listan.");
+                        System.out.println(staff.getFirstName() + " " + staff.getLastName() + " med ID " + deleteStaffById + " har nu tagits bort från listan.");
                         System.out.println("Din personallista har nu " + staffList.size() + " personer");
                         break;
                     }
@@ -218,7 +218,7 @@ public class Main {
             for (Staff staff : staffList) {
                 if (staff instanceof Employee) {
                     Employee employee = (Employee) staff;
-                    System.out.println("Namn: " + employee.firstName + " " + employee.lastName + ", Anställningsdatum: " + employee.hireDate);
+                    System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Anställningsdatum: " + employee.getHireDate());
                 }
             }
 

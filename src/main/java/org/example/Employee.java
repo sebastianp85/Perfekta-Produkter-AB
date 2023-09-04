@@ -3,8 +3,25 @@ package org.example;
 import java.util.List;
 
 public class Employee extends Staff {
-    public int salary;
-    public String hireDate;
+    private int salary;
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public String getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    private String hireDate;
     public Employee(String firstName, String lastName, String gender, int id, int salary, String hireDate) {
         super(firstName, lastName, gender, id);
         this.salary = salary;
@@ -18,7 +35,7 @@ public class Employee extends Staff {
         for (Staff staff : staffList) {
             if (staff instanceof Employee) {
                 Employee employee = (Employee) staff;
-                if (employee.gender == "male") {
+                if (employee.getGender() == "male") {
                     totalSalary += employee.salary;
                     count++;
                 }
@@ -34,7 +51,7 @@ public class Employee extends Staff {
         for (Staff staff : staffList) {
             if (staff instanceof Employee) {
                 Employee employee = (Employee) staff;
-                if (employee.gender == "female") {
+                if (employee.getGender() == "female") {
                     totalSalary += employee.salary;
                     count++;
                 }
@@ -46,7 +63,7 @@ public class Employee extends Staff {
     //Override toString används för att kunna skriva ut info om en anställd.
     @Override
     public String toString(){
-        return "Namn: " + firstName + " " + lastName + ", Kön: " + gender + ", ID: " + id + ", Lön: " + salary + ", Anställningsdatum: " + hireDate;
+        return "Namn: " + getFirstName() + " " + getLastName() + ", Kön: " + getGender() + ", ID: " + getId() + ", Lön: " + salary + ", Anställningsdatum: " + hireDate;
     }
 };
 
