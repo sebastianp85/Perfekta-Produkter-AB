@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,32 +15,16 @@ public class Staff {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Staff(String firstName, String lastName, String gender, int id) {
@@ -74,8 +57,14 @@ public class Staff {
     }
 
     public static void sortStaffListByHireDate(List<Staff> staffList) {
-        Comparator<Staff> hireDateComparator = Comparator.comparing(staff -> staff instanceof Employee ? ((Employee) staff).getHireDate() : "");
+        for (Staff staff : staffList) {
+            if (staff instanceof Employee) {
+                Employee employee = (Employee) staff;
+                System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Anställningsdatum: " + employee.getHireDate());
+            }
+        }
 
+        Comparator<Staff> hireDateComparator = Comparator.comparing(staff -> staff instanceof Employee ? ((Employee) staff).getHireDate() : "");
         Collections.sort(staffList, hireDateComparator);
     }
 };
