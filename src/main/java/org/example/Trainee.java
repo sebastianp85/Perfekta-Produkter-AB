@@ -47,7 +47,7 @@ public class Trainee extends Staff{
         Staff newTrainee = new Trainee(firstName, lastName, gender, id, endDate, "");
         staffList.add(newTrainee);
 
-        System.out.print("Du har nu lagt till följande person: " + newTrainee);
+        System.out.print("Du har nu lagt till följande praktikant: " + newTrainee);
         System.out.println("Din personallista är:");
         printStaffList(staffList);
     }
