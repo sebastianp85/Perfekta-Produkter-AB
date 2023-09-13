@@ -19,11 +19,7 @@ public class Employee extends Staff {
         return hireDate;
     }
 
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
-    }
-
-    private String hireDate;
+    private final String hireDate;
     public Employee(String firstName, String lastName, String gender, int id, int salary, String hireDate) {
         super(firstName, lastName, gender, id);
         this.salary = salary;
@@ -31,13 +27,12 @@ public class Employee extends Staff {
     }
 
     public static double getAvgSalaryMen(List<Staff> staffList) {
-        int totalSalary = 0;
+        float totalSalary = 0;
         int count = 0;
 
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
-                if (employee.getGender() == "male") {
+            if (staff instanceof Employee employee) {
+                if (employee.getGender().equals("male")) {
                     totalSalary += employee.salary;
                     count++;
                 }
@@ -47,13 +42,12 @@ public class Employee extends Staff {
     }
 
     public static double getAvgSalaryWomen(List<Staff> staffList) {
-        int totalSalary = 0;
+        float totalSalary = 0;
         int count = 0;
 
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
-                if (employee.getGender() == "female") {
+            if (staff instanceof Employee employee) {
+                if (employee.getGender().equals("female")) {
                     totalSalary += employee.salary;
                     count++;
                 }
@@ -108,10 +102,9 @@ public class Employee extends Staff {
         }
     }
 
-    public static void salaryList(List<Staff> staffList, Scanner scanner) {
+    public static void salaryList(List<Staff> staffList ) {
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getSalary() > 0) {
                     System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Lön: " + employee.getSalary() + ", ID " + employee.getId());
                 }
@@ -122,8 +115,7 @@ public class Employee extends Staff {
     public static void updateSalaryList(List<Staff> staffList, Scanner scanner){
         int updateSalaryId = scanner.nextInt();
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getId() == updateSalaryId) {
                     System.out.println("Nuvarande lön för " + employee.getFirstName() + " " + employee.getLastName() + " är: " + employee.getSalary());
                     System.out.println("Ange den nya lönen:");
@@ -135,11 +127,10 @@ public class Employee extends Staff {
         }
     }
 
-    //Override toString används för att kunna skriva ut info om en anställd.
     @Override
     public String toString(){
         return "Namn: " + getFirstName() + " " + getLastName() + ", Kön: " + getGender() + ", ID: " + getId() + ", Lön: " + salary + ", Anställningsdatum: " + hireDate;
     }
-};
+}
 
 

@@ -40,7 +40,7 @@ public class Main {
                     int updateStaff = scanner.nextInt();
                     if (updateStaff == 1) {
                         System.out.println("De som finns på lönelistan är:");
-                        salaryList(staffList, scanner);
+                        salaryList(staffList);
 
                         System.out.println("Ange ID för den anställda du vill uppdatera lönen för");
                         updateSalaryList(staffList, scanner);

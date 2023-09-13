@@ -1,15 +1,14 @@
 package org.example;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Staff {
-    private String firstName;
-    private String lastName;
-    private String gender;
+    private final String firstName;
+    private final String lastName;
+    private final String gender;
 
-    private int id;
+    private final int id;
 
     public String getFirstName() {
         return firstName;
@@ -36,35 +35,40 @@ public class Staff {
     }
     public static void printStaffList(List<Staff> staffList) {
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
-                System.out.println("Anställd: " + employee.getFirstName() + " " + employee.getLastName());
-                System.out.println("Kön: " + employee.getGender());
-                System.out.println("ID: " + employee.getId());
-                System.out.println("Lön: " + employee.getSalary());
-                System.out.println("Anställningsdatum: " + employee.getHireDate());
-                System.out.println();
-            } else if (staff instanceof Trainee) {
-                Trainee trainee = (Trainee) staff;
-                System.out.println("Praktikant: " + trainee.getFirstName() + " " + trainee.getLastName());
-                System.out.println("Kön: " + trainee.getGender());
-                System.out.println("ID: " + trainee.getId());
-                System.out.println("Slutdatum: " + trainee.getEndDate());
-                System.out.println("Omdöme: " + trainee.getEvaluation());
-                System.out.println();
+            String title = (staff instanceof Employee) ? "Anställd" : "Praktikant";
+            String firstName = staff.getFirstName();
+            String lastName = staff.getLastName();
+            String gender = staff.getGender();
+            int id = staff.getId();
+
+            System.out.println(title + ": " + firstName + " " + lastName);
+            System.out.println("Kön: " + gender);
+            System.out.println("ID: " + id);
+
+            if (staff instanceof Employee employee) {
+                int salary = employee.getSalary();
+                String hireDate = employee.getHireDate();
+                System.out.println("Lön: " + salary);
+                System.out.println("Anställningsdatum: " + hireDate);
+            } else if (staff instanceof Trainee trainee) {
+                String endDate = trainee.getEndDate();
+                String evaluation = trainee.getEvaluation();
+                System.out.println("Slutdatum: " + endDate);
+                System.out.println("Omdöme: " + evaluation);
             }
+
+            System.out.println();
         }
     }
 
     public static void sortStaffListByHireDate(List<Staff> staffList) {
+        Comparator<Staff> hireDateComparator = Comparator.comparing(staff -> staff instanceof Employee ? ((Employee) staff).getHireDate() : "");
+        staffList.sort(hireDateComparator);
+
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Anställningsdatum: " + employee.getHireDate());
             }
         }
-
-        Comparator<Staff> hireDateComparator = Comparator.comparing(staff -> staff instanceof Employee ? ((Employee) staff).getHireDate() : "");
-        Collections.sort(staffList, hireDateComparator);
     }
-};
+}
