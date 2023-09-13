@@ -19,7 +19,7 @@ public class Employee extends Staff {
         return hireDate;
     }
 
-    private String hireDate;
+    private final String hireDate;
     public Employee(String firstName, String lastName, String gender, int id, int salary, String hireDate) {
         super(firstName, lastName, gender, id);
         this.salary = salary;
@@ -27,7 +27,7 @@ public class Employee extends Staff {
     }
 
     public static double getAvgSalaryMen(List<Staff> staffList) {
-        int totalSalary = 0;
+        float totalSalary = 0;
         int count = 0;
 
         for (Staff staff : staffList) {
@@ -43,7 +43,7 @@ public class Employee extends Staff {
     }
 
     public static double getAvgSalaryWomen(List<Staff> staffList) {
-        int totalSalary = 0;
+        float totalSalary = 0;
         int count = 0;
 
         for (Staff staff : staffList) {
@@ -135,6 +135,6 @@ public class Employee extends Staff {
     public String toString(){
         return "Namn: " + getFirstName() + " " + getLastName() + ", Kön: " + getGender() + ", ID: " + getId() + ", Lön: " + salary + ", Anställningsdatum: " + hireDate;
     }
-};
+}
 
 
