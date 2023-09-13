@@ -108,7 +108,7 @@ public class Employee extends Staff {
         }
     }
 
-    public static void salaryList(List<Staff> staffList, Scanner scanner) {
+    public static void salaryList(List<Staff> staffList ) {
         for (Staff staff : staffList) {
             if (staff instanceof Employee) {
                 Employee employee = (Employee) staff;
@@ -135,7 +135,6 @@ public class Employee extends Staff {
         }
     }
 
-    //Override toString används för att kunna skriva ut info om en anställd.
     @Override
     public String toString(){
         return "Namn: " + getFirstName() + " " + getLastName() + ", Kön: " + getGender() + ", ID: " + getId() + ", Lön: " + salary + ", Anställningsdatum: " + hireDate;
