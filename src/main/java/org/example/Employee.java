@@ -32,7 +32,7 @@ public class Employee extends Staff {
 
         for (Staff staff : staffList) {
             if (staff instanceof Employee employee) {
-                if (employee.getGender() == "male") {
+                if (employee.getGender().equals("male")) {
                     totalSalary += employee.salary;
                     count++;
                 }
@@ -47,7 +47,7 @@ public class Employee extends Staff {
 
         for (Staff staff : staffList) {
             if (staff instanceof Employee employee) {
-                if (employee.getGender() == "female") {
+                if (employee.getGender().equals("female")) {
                     totalSalary += employee.salary;
                     count++;
                 }
