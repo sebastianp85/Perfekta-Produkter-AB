@@ -19,10 +19,6 @@ public class Employee extends Staff {
         return hireDate;
     }
 
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
-    }
-
     private String hireDate;
     public Employee(String firstName, String lastName, String gender, int id, int salary, String hireDate) {
         super(firstName, lastName, gender, id);

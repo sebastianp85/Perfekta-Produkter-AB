@@ -5,11 +5,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Staff {
-    private String firstName;
-    private String lastName;
-    private String gender;
+    private final String firstName;
+    private final String lastName;
+    private final String gender;
 
-    private int id;
+    private final int id;
 
     public String getFirstName() {
         return firstName;
@@ -66,7 +66,7 @@ public class Staff {
 
     public static void sortStaffListByHireDate(List<Staff> staffList) {
         Comparator<Staff> hireDateComparator = Comparator.comparing(staff -> staff instanceof Employee ? ((Employee) staff).getHireDate() : "");
-        Collections.sort(staffList, hireDateComparator);
+        staffList.sort(hireDateComparator);
 
         for (Staff staff : staffList) {
             if (staff instanceof Employee) {
@@ -75,4 +75,4 @@ public class Staff {
             }
         }
     }
-};
+}
