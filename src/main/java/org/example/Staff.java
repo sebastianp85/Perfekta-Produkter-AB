@@ -45,14 +45,12 @@ public class Staff {
             System.out.println("Kön: " + gender);
             System.out.println("ID: " + id);
 
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 int salary = employee.getSalary();
                 String hireDate = employee.getHireDate();
                 System.out.println("Lön: " + salary);
                 System.out.println("Anställningsdatum: " + hireDate);
-            } else if (staff instanceof Trainee) {
-                Trainee trainee = (Trainee) staff;
+            } else if (staff instanceof Trainee trainee) {
                 String endDate = trainee.getEndDate();
                 String evaluation = trainee.getEvaluation();
                 System.out.println("Slutdatum: " + endDate);
@@ -68,8 +66,7 @@ public class Staff {
         staffList.sort(hireDateComparator);
 
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Anställningsdatum: " + employee.getHireDate());
             }
         }

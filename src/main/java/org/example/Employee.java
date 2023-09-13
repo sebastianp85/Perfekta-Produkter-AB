@@ -31,8 +31,7 @@ public class Employee extends Staff {
         int count = 0;
 
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getGender() == "male") {
                     totalSalary += employee.salary;
                     count++;
@@ -47,8 +46,7 @@ public class Employee extends Staff {
         int count = 0;
 
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getGender() == "female") {
                     totalSalary += employee.salary;
                     count++;
@@ -106,8 +104,7 @@ public class Employee extends Staff {
 
     public static void salaryList(List<Staff> staffList ) {
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getSalary() > 0) {
                     System.out.println("Namn: " + employee.getFirstName() + " " + employee.getLastName() + ", Lön: " + employee.getSalary() + ", ID " + employee.getId());
                 }
@@ -118,8 +115,7 @@ public class Employee extends Staff {
     public static void updateSalaryList(List<Staff> staffList, Scanner scanner){
         int updateSalaryId = scanner.nextInt();
         for (Staff staff : staffList) {
-            if (staff instanceof Employee) {
-                Employee employee = (Employee) staff;
+            if (staff instanceof Employee employee) {
                 if (employee.getId() == updateSalaryId) {
                     System.out.println("Nuvarande lön för " + employee.getFirstName() + " " + employee.getLastName() + " är: " + employee.getSalary());
                     System.out.println("Ange den nya lönen:");
