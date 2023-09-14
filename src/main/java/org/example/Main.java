@@ -15,11 +15,11 @@ public class Main {
         System.out.println("Välkommen till Perfekta Produkter AB AdminSystem");
         int firstChoice;
         do {
-            displayAndSelectFromMainMenu();
+            MenuSystem.displayAndSelectFromMainMenu();
 
             firstChoice = scanner.nextInt();
             if (firstChoice == 1) {
-                displayAndSelectFromStaffMenu();
+                MenuSystem.displayAndSelectFromStaffMenu();
 
                 int personalChoice = scanner.nextInt();
                 if (personalChoice == 1) {
@@ -35,7 +35,7 @@ public class Main {
                     }
 
                 } else if (personalChoice == 2) {
-                    updateStaffMenu();
+                    MenuSystem.updateStaffMenu();
 
                     int updateStaff = scanner.nextInt();
                     if (updateStaff == 1) {
@@ -93,30 +93,6 @@ public class Main {
             }
         } while (firstChoice != 0);
         System.out.println("Programmet avslutas...");
-    }
-
-    private static void displayAndSelectFromMainMenu(){
-        System.out.println("Välj ett av följande alternativ genom att skriva siffran för menyn.");
-        System.out.println("1: Personal: Lägg till / Ändra / Radera.");
-        System.out.println("2: Personallista:");
-        System.out.println("3: Snittlöner.");
-        System.out.println("4: Anställningsdatum.");
-        System.out.println("0: Avsluta programmet.");
-    }
-
-    private static void displayAndSelectFromStaffMenu(){
-        System.out.println("Du valde kategorin Personal");
-        System.out.println("Gör nu följande val:");
-        System.out.println("1: Lägg till personal");
-        System.out.println("2: Ändra befintlig personal");
-        System.out.println("3: Radera befintlig personal");
-    }
-
-    private static void updateStaffMenu() {
-        System.out.println("Här kan du uppdatera data för personal");
-        System.out.println("Gör nu följande val:");
-        System.out.println("1: Ändra lön för en anställd");
-        System.out.println("2: Lämna omdöme för en praktikant");
     }
 }
 
